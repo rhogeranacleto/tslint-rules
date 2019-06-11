@@ -1,5 +1,5 @@
 {
-	"name": "tslint-rules",
+	"name": "@rhogeranacleto/tslint-rules",
 	"version": "1.0.0",
 	"description": "Sofit View tslint rules",
 	"main": "tslint.json",
