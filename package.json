@@ -1,5 +1,5 @@
 {
-	"name": "@sofit/tslint-rules",
+	"name": "tslint-rules",
 	"version": "1.0.0",
 	"description": "Sofit View tslint rules",
 	"main": "tslint.json",
@@ -8,15 +8,8 @@
 		"lint": "tslint --project ./",
 		"test": "jest --config ./jest.config.json --clearMocks"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/SofitSoftware/tslint-rules.git"
-	},
 	"author": "rhogeranacleto@gmail.com",
 	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/SofitSoftware/tslint-rules/issues"
-	},
 	"dependencies": {
 		"@types/node": "^9.6.6",
 		"tslint": "^5.12.0",
