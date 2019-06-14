@@ -5,13 +5,14 @@ interface IMaria {
 	// tslint:disable-next-line:no-any
 	rule: any;
 	fileName?: string;
+	fix?: boolean;
 }
 
 export function lintRunner(data: IMaria) {
 
-	const { src, rule, fileName = '' } = data;
+	const { src, rule, fileName = 'jj.snap', fix = false } = data;
 
-	const linter = new Linter({ fix: false });
+	const linter = new Linter({ fix });
 
 	linter.lint(
 		fileName,

@@ -1,4 +1,8 @@
 {
 	"editor.insertSpaces": false,
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"jest.pathToConfig": "./jest.config.json",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true
+    }
 }

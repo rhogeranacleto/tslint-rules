@@ -11,7 +11,11 @@ class LastLineWalker extends Lint.AbstractWalker<void> {
 
 		if (fileText[fileText.length - 1] === '\n') {
 
-			this.addFailure(sourceFile.getEnd(), sourceFile.getEnd(), NOT_ALLOWED_LINE);
+			const trim = fileText.trim();
+
+			const fix = new Lint.Replacement(sourceFile.getStart(), sourceFile.getEnd(), trim);
+
+			this.addFailure(sourceFile.getEnd(), sourceFile.getEnd(), NOT_ALLOWED_LINE, fix);
 		}
 	}
 }

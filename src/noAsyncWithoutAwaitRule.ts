@@ -1,15 +1,7 @@
 import * as Lint from 'tslint';
 import ts from 'typescript';
 
-export class Rule extends Lint.Rules.AbstractRule {
-
-	public static FAILURE_STRING = 'Async functions with no await are not allowed.';
-
-	public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
-
-		return this.applyWithWalker(new Walk(sourceFile, this.getOptions()));
-	}
-}
+export const FAILURE_STRING = 'Async functions with no await are not allowed.';
 
 class Walk extends Lint.RuleWalker {
 
@@ -128,9 +120,17 @@ class Walk extends Lint.RuleWalker {
 				this.addFailureAt(
 					asyncModifier.getStart(),
 					asyncModifier.getEnd() - asyncModifier.getStart(),
-					Rule.FAILURE_STRING
+					FAILURE_STRING
 				);
 			}
 		}
+	}
+}
+
+export class Rule extends Lint.Rules.AbstractRule {
+
+	public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
+
+		return this.applyWithWalker(new Walk(sourceFile, this.getOptions()));
 	}
 }

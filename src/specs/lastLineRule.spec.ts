@@ -1,3 +1,4 @@
+import { ReplacementJson, RuleFailure } from 'tslint';
 import { lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'last-line';
@@ -18,5 +19,21 @@ jj();`, 0]
 		const result = lintRunner({ src, rule: RULE });
 
 		expect(result.errorCount).toBe(count);
+	});
+
+	it.each([
+		[`console.log(jj);
+`],
+		[`import jj from 'jj';
+console.log(jj);
+
+`]
+	])('should fix %s', src => {
+
+		const fixResult = lintRunner({ src, rule: RULE, fix: true });
+
+		expect(fixResult.errorCount).toBe(0);
+
+		expect(((fixResult.fixes as RuleFailure[])[0].toJson().fix as ReplacementJson).innerText).toMatchSnapshot();
 	});
 });

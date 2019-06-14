@@ -6,6 +6,7 @@
 	"testMatch": [
 		"**/?!(*.e2e).spec.ts"
 	],
+	"roots":["<rootDir>/src"],
 	"moduleFileExtensions": [
 		"ts",
 		"tsx",
