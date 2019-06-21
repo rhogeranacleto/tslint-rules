@@ -1,5 +1,6 @@
 import * as Lint from 'tslint';
 import ts from 'typescript';
+import { removeLastEmptyLineOfTheBlock } from './helpers/modifiers';
 
 const NEW_LINE_AFTER = 'Missing blank line after block declaration';
 const NEW_LINE_END = 'Not allowed blank line before block ends';
@@ -42,22 +43,11 @@ class Walker extends Lint.RuleWalker {
 
 		if (endLine > (childEndLine + 1)) {
 
-			const lines = block.getFullText().split('\n');
-			const bracket = lines.pop();
-
-			for (let i = lines.length - 1; i > 0; i--) {
-
-				if (lines[i].trim()) {
-
-					break;
-				}
-
-				lines.pop();
-			}
-
-			lines.push(bracket as string);
-
-			const fix = new Lint.Replacement(block.getFullStart(), block.getFullWidth(), lines.join('\n'));
+			const fix = new Lint.Replacement(
+				block.getFullStart(),
+				block.getFullWidth(),
+				removeLastEmptyLineOfTheBlock(block.getFullText())
+			);
 
 			this.addFailureAtNode(block, NEW_LINE_END, fix);
 		}

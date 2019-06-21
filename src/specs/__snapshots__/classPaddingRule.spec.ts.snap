@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClassPadding @Entity()
+		class Maria {
+
+		} 1`] = `
+Array [
+  Array [
+    "@Entity()
+		class Maria { }",
+  ],
+]
+`;
+
+exports[`ClassPadding @Entity()
+		class SemMaria {
+
+		} 1`] = `
+Array [
+  Array [
+    "@Entity()
+		class SemMaria { }",
+  ],
+]
+`;
+
+exports[`ClassPadding class Maria {
+			constructor(private jj: JJ){}
+			public dan() {
+				console.log('oi');
+			}
+			public dan() {
+				console.log('oi');
+			}
+		} 1`] = `
+Array [
+  Array [
+    "class Maria {
+
+			constructor(private jj: JJ){}
+			public dan() {
+				console.log('oi');
+			}
+			public dan() {
+				console.log('oi');
+			}
+		}",
+  ],
+]
+`;
+
+exports[`ClassPadding class Maria {
+		} 1`] = `
+Array [
+  Array [
+    "class Maria { }",
+  ],
+]
+`;
+
+exports[`ClassPadding class Maria {
+
+			public dan() {
+				console.log('oi');
+			}
+
+		} 1`] = `
+Array [
+  Array [
+    "class Maria {
+
+			public dan() {
+				console.log('oi');
+			}
+		}",
+  ],
+]
+`;
+
+exports[`ClassPadding class Maria {
+
+		} 1`] = `
+Array [
+  Array [
+    "class Maria { }",
+  ],
+]
+`;
+
+exports[`ClassPadding class OtraMaria {
+		} 1`] = `
+Array [
+  Array [
+    "class OtraMaria { }",
+  ],
+]
+`;
+
+exports[`ClassPadding class TaMaria {
+
+		} 1`] = `
+Array [
+  Array [
+    "class TaMaria { }",
+  ],
+]
+`;
+
+exports[`ClassPadding import jj from 'jj';
+		@Entity()
+		class Maria {} 1`] = `
+Array [
+  Array [
+    "
+
+		@Entity()
+		class Maria {}",
+  ],
+]
+`;
+
+exports[`ClassPadding import jj from 'jj';
+		class Maria {} 1`] = `
+Array [
+  Array [
+    "
+
+		class Maria {}",
+  ],
+]
+`;

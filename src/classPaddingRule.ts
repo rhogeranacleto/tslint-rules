@@ -1,5 +1,6 @@
 import * as Lint from 'tslint';
 import ts from 'typescript';
+import { removeLastEmptyLineOfTheBlock } from './helpers/modifiers';
 import { prevTokenChecker } from './helpers/prevChecker';
 
 class Walker extends Lint.RuleWalker {
@@ -10,7 +11,13 @@ class Walker extends Lint.RuleWalker {
 
 		if (prevTokenChecker(classDeclaration, this.getSourceFile())) {
 
-			this.addFailureAtNode(classDeclaration, 'Class must have a line before');
+			const fix = new Lint.Replacement(
+				classDeclaration.getFullStart(),
+				classDeclaration.getFullWidth(),
+				`\n${classDeclaration.getFullText()}`
+			);
+
+			this.addFailureAtNode(classDeclaration, 'Class must have a line before', fix);
 		}
 
 		super.visitClassDeclaration(classDeclaration);
@@ -33,7 +40,13 @@ class Walker extends Lint.RuleWalker {
 
 				if (startLine !== endLine) {
 
-					this.addFailureAtNode(classDeclaration, 'Classes without body must be in the same line');
+					const fix = new Lint.Replacement(
+						classDeclaration.getFullStart(),
+						classDeclaration.getFullWidth(),
+						classDeclaration.getFullText().replace(/\{(\n|\t)+\}/, '{ }')
+					);
+
+					this.addFailureAtNode(classDeclaration, 'Classes without body must be in the same line', fix);
 				}
 			}
 		}
@@ -42,24 +55,31 @@ class Walker extends Lint.RuleWalker {
 	private addBody(classDeclaration: ts.ClassDeclaration, endLine: number) {
 
 		const startLine = ts.getLineAndCharacterOfPosition(this.getSourceFile(), classDeclaration.getStart()).line;
+		const body = classDeclaration.getChildren()[classDeclaration.getChildCount() - 2];
 
-		const bodyStartLine = ts.getLineAndCharacterOfPosition(
-			this.getSourceFile(),
-			classDeclaration.getChildren()[classDeclaration.getChildCount() - 2].getStart()
-		).line;
-		const bodyEndLine = ts.getLineAndCharacterOfPosition(
-			this.getSourceFile(),
-			classDeclaration.getChildren()[classDeclaration.getChildCount() - 2].getEnd()
-		).line;
+		const bodyStartLine = ts.getLineAndCharacterOfPosition(this.getSourceFile(), body.getStart()).line;
+		const bodyEndLine = ts.getLineAndCharacterOfPosition(this.getSourceFile(), body.getEnd()).line;
 
 		if (bodyStartLine === (startLine + 1)) {
 
-			this.addFailureAtNode(classDeclaration, 'Must have line after class declaration');
+			const fix = new Lint.Replacement(
+				classDeclaration.getFullStart(),
+				classDeclaration.getFullWidth(),
+				classDeclaration.getFullText().replace('{', '{\n')
+			);
+
+			this.addFailureAtNode(classDeclaration, 'Must have line after class declaration', fix);
 		}
 
 		if (endLine > (bodyEndLine + 1)) {
 
-			this.addFailureAtNode(classDeclaration, 'Not allowed line before class ends');
+			const fix = new Lint.Replacement(
+				classDeclaration.getFullStart(),
+				classDeclaration.getFullWidth(),
+				removeLastEmptyLineOfTheBlock(classDeclaration.getFullText())
+			);
+
+			this.addFailureAtNode(classDeclaration, 'Not allowed line before class ends', fix);
 		}
 	}
 }

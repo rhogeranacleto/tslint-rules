@@ -1,4 +1,4 @@
-import { lintRunner } from '../helpers/lintRunner';
+import { getReplacements, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'class-padding';
 
@@ -90,5 +90,46 @@ describe('ClassPadding', () => {
 		const result = lintRunner({ src, rule: RULE });
 
 		expect(result.errorCount).toBe(count);
+	});
+
+	it.only.each([
+		[`import jj from 'jj';
+		class Maria {}`],
+		[`import jj from 'jj';
+		@Entity()
+		class Maria {}`],
+		[`class Maria {
+			constructor(private jj: JJ){}
+			public dan() {
+				console.log('oi');
+			}
+			public dan() {
+				console.log('oi');
+			}
+		}`],
+		[`class Maria {
+
+			public dan() {
+				console.log('oi');
+			}
+
+		}`],
+		[`class TaMaria {
+
+		}`],
+		[`@Entity()
+		class SemMaria {
+
+		}`],
+		[`class OtraMaria {
+		}`]
+	])('%s', src => {
+
+		const result = lintRunner({ src, rule: RULE, fix: true });
+
+		// console.log(result.failures);
+		expect(result.errorCount).toBe(0);
+
+		expect(getReplacements(result)).toMatchSnapshot();
 	});
 });
