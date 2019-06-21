@@ -1,5 +1,4 @@
-import { ReplacementJson, RuleFailure } from 'tslint';
-import { lintRunner } from '../helpers/lintRunner';
+import { getReplacements, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'last-line';
 
@@ -34,6 +33,6 @@ console.log(jj);
 
 		expect(fixResult.errorCount).toBe(0);
 
-		expect(((fixResult.fixes as RuleFailure[])[0].toJson().fix as ReplacementJson).innerText).toMatchSnapshot();
+		expect(getReplacements(fixResult)).toMatchSnapshot();
 	});
 });

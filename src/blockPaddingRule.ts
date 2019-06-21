@@ -25,7 +25,13 @@ class Walker extends Lint.RuleWalker {
 
 		if (childLine <= (startLine + 1)) {
 
-			this.addFailureAtNode(block, NEW_LINE_AFTER, new Lint.Replacement(block.getStart() + 1, 1, '\n'));
+			const fix = new Lint.Replacement(
+				block.getFullStart(),
+				block.getFullWidth(),
+				block.getFullText().replace('{', '{\n')
+			);
+
+			this.addFailureAtNode(block, NEW_LINE_AFTER, fix);
 		}
 	}
 
@@ -36,7 +42,24 @@ class Walker extends Lint.RuleWalker {
 
 		if (endLine > (childEndLine + 1)) {
 
-			this.addFailureAtNode(block, NEW_LINE_END, new Lint.Replacement(block.getStart() + 1, 1, '\n'));
+			const lines = block.getFullText().split('\n');
+			const bracket = lines.pop();
+
+			for (let i = lines.length - 1; i > 0; i--) {
+
+				if (lines[i].trim()) {
+
+					break;
+				}
+
+				lines.pop();
+			}
+
+			lines.push(bracket as string);
+
+			const fix = new Lint.Replacement(block.getFullStart(), block.getFullWidth(), lines.join('\n'));
+
+			this.addFailureAtNode(block, NEW_LINE_END, fix);
 		}
 	}
 }

@@ -56,7 +56,7 @@ describe('blockPadding Rule', () => {
 		} catch(e){
 			console.log(0)
 		}`, 2],
-		[`done(() => {
+			[`done(() => {
 			return 'maria';
 		})`, 1]
 		])('%s should throw error for line after method', (src: string, count = 1) => {

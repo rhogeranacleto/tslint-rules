@@ -1,12 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LastLineRule should fix console.log(jj);
- 1`] = `"console.log(jj);"`;
+ 1`] = `
+Array [
+  Array [
+    "console.log(jj);",
+  ],
+]
+`;
 
 exports[`LastLineRule should fix import jj from 'jj';
 console.log(jj);
 
  1`] = `
-"import jj from 'jj';
-console.log(jj);"
+Array [
+  Array [
+    "import jj from 'jj';
+console.log(jj);",
+  ],
+]
 `;

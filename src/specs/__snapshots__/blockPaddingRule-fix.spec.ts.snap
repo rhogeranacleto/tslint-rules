@@ -1,0 +1,421 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`blockPadding Rule class A {
+			constructor() {
+				console.log(1);
+			}
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+				console.log(1);
+			}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule class A {
+			public b() {
+				console.log(1);
+			}
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+				console.log(1);
+			}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule class A {
+			public b() {
+
+				console.log(1);
+
+			}
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+				console.log(1);
+			}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule done(() => {
+		return 'maria';
+	}) should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+		return 'maria';
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule done(() => {
+
+			return 'maria';
+
+		}) should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			return 'maria';
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule for (let i = 0; i < 10; i++) {
+		console.log(i);
+	} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+		console.log(i);
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule for (let i = 0; i < 10; i++) {
+
+			console.log(i);
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(i);
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule for (let test in testes) {
+		console.log(test);
+	} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+		console.log(test);
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule for (let test in testes) {
+
+			console.log(test);
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(test);
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule for (let test of testes) {
+		console.log(test);
+	} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+		console.log(test);
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule for (let test of testes) {
+
+			console.log(test);
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(test);
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule function maria(){
+		console.log('true');
+	} should throw error for line after method 1`] = `
+Array [
+  Array [
+    "{
+
+		console.log('true');
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule function maria(){
+
+			console.log('true');
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    "{
+
+			console.log('true');
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule if (true) {
+			console.log(true);
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(true);
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule if (true) {
+		console.log(true);
+	} else {
+		console.log(false)
+	} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+		console.log(true);
+	}",
+  ],
+  Array [
+    " {
+
+		console.log(false)
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule if (true) {
+		console.log(true);
+	} else if (false) {
+		console.log(false)
+	} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+		console.log(true);
+	}",
+  ],
+  Array [
+    " {
+
+		console.log(false)
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule if (true) {
+
+			console.log(true);
+		} else {
+
+			console.log(false)
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(false)
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule if (true) {
+
+			console.log(true);
+
+			joao();
+
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(true);
+
+			joao();
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule if (true) {
+
+			console.log(true);
+
+		} else {
+
+			console.log(false)
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(true);
+		}",
+  ],
+  Array [
+    " {
+
+			console.log(false)
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule if (true) {
+
+			console.log(true);
+
+		} else if (false) {
+
+			console.log(false)
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(true);
+		}",
+  ],
+  Array [
+    " {
+
+			console.log(false)
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule if (true) {
+
+		console.log(true);
+	} else {
+		console.log(false)
+	} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+		console.log(false)
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule it('jj', () => {
+			expect(result.errorCount).toBe(1);
+	}); should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			expect(result.errorCount).toBe(1);
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule it('jj', () => {
+
+			expect(result.errorCount).toBe(1);
+
+		}); should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			expect(result.errorCount).toBe(1);
+		}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule try {
+		console.log(0/0);
+	} catch(e){
+		console.log(0)
+	} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+		console.log(0/0);
+	}",
+  ],
+  Array [
+    "{
+
+		console.log(0)
+	}",
+  ],
+]
+`;
+
+exports[`blockPadding Rule try {
+
+			console.log(0/0);
+
+		} catch(e){
+
+			console.log(0)
+
+		} should throw error for line after method 1`] = `
+Array [
+  Array [
+    " {
+
+			console.log(0/0);
+		}",
+  ],
+  Array [
+    "{
+
+			console.log(0)
+		}",
+  ],
+]
+`;

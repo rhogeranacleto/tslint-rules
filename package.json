@@ -6,7 +6,8 @@
 	"scripts": {
 		"build": "tsc -w --p ./",
 		"lint": "tslint --project ./",
-		"test": "jest --config ./jest.config.json --clearMocks"
+		"test": "jest --config ./jest.config.json --clearMocks",
+		"test:watch": "npm test -- --watch"
 	},
 	"author": "rhogeranacleto@gmail.com",
 	"license": "ISC",
