@@ -10,7 +10,7 @@ interface IMaria {
 
 export function lintRunner(data: IMaria) {
 
-	const { src, rule, fileName = 'jj.snap', fix = false } = data;
+	const { src, rule, fileName = `/tmp/${Date.now()}.snap`, fix = false } = data;
 
 	const linter = new Linter({ fix });
 
@@ -27,10 +27,3 @@ export function lintRunner(data: IMaria) {
 
 	return linter.getResult();
 }
-
-// export function getFixedResult(data: IMaria) {
-
-// 	const result = helper(data);
-
-// 	return Replacement.applyFixes(data.src, [result.failures[0].getFix()]);
-// }
