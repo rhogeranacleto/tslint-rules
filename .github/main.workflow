@@ -1,8 +1,17 @@
-workflow "New workflow" {
+workflow "Test my code" {
   on = "push"
-  resolves = ["Annotated Jest"]
+  resolves = ["npm test"]
 }
 
-action "Annotated Jest" {
-  uses = "rkusa/jest-action@1.0.0"
+action "npm ci" {
+  uses = "docker://node:alpine"
+  runs = "npm"
+  args = "ci"
+}
+
+action "npm test" {
+  needs = "npm ci"
+  uses = "docker://node:alpine"
+  runs = "npm"
+  args = "test"
 }
