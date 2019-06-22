@@ -8,7 +8,13 @@ class Walk extends Lint.RuleWalker {
 
 		if (prevTokenChecker(constructor, this.getSourceFile())) {
 
-			this.addFailureAtNode(constructor, 'Constructor must have a line before');
+			const fix = new Lint.Replacement(
+				constructor.getFullStart(),
+				constructor.getFullWidth(),
+				`\n${constructor.getFullText()}`
+			);
+
+			this.addFailureAtNode(constructor, 'Constructor must have a line before', fix);
 		}
 
 		super.visitConstructorDeclaration(constructor);

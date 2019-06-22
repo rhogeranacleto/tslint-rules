@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Constructor class Maria {
+			@Otro()
+			constructor(private jj: JJ) {}
+		} 1`] = `
+Array [
+  Array [
+    "
+
+			@Otro()
+			constructor(private jj: JJ) {}",
+  ],
+]
+`;
+
+exports[`Constructor class Maria {
+			constructor(private jj: JJ) {}
+		} 1`] = `
+Array [
+  Array [
+    "
+
+			constructor(private jj: JJ) {}",
+  ],
+]
+`;
+
+exports[`Constructor class Maria {
+			public maria = true;
+			@Otro()
+			constructor(private jj: JJ) {}
+		} 1`] = `
+Array [
+  Array [
+    "
+
+			@Otro()
+			constructor(private jj: JJ) {}",
+  ],
+]
+`;
+
+exports[`Constructor class Maria {
+			public maria = true;
+			constructor(private jj: JJ) {}
+		} 1`] = `
+Array [
+  Array [
+    "
+
+			constructor(private jj: JJ) {}",
+  ],
+]
+`;
