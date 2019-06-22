@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IfPaddingRule console.log(true);
+		if(true){
+			return true;
+		} 1`] = `
+"console.log(true);
+
+		if(true){
+			return true;
+		}"
+`;
+
+exports[`IfPaddingRule console.log(true);
+		if(true){
+			return true;
+		}else{
+			return false;
+		} 1`] = `
+"console.log(true);
+
+		if(true){
+			return true;
+		}else{
+			return false;
+		}"
+`;
+
+exports[`IfPaddingRule if(true){
+			return 'so if';
+		}
+		else
+		{
+			return 'else if 2';
+		} 1`] = `
+"if(true){
+			return 'so if';
+		} else {
+			return 'else if 2';
+		}"
+`;
+
+exports[`IfPaddingRule if(true){
+			return 'so if';
+		}
+		else
+		if(false&&maria) {
+			return 'else if';
+		}
+		else {
+			return 'só else';
+		} 1`] = `
+"if(true){
+			return 'so if';
+		} else if(false&&maria) {
+			return 'else if';
+		} else {
+			return 'só else';
+		}"
+`;
+
+exports[`IfPaddingRule if(true){
+			return 'so if';
+		}
+		else if(false&&maria) {
+			return 'else if';
+		} 1`] = `
+"if(true){
+			return 'so if';
+		} else if(false&&maria) {
+			return 'else if';
+		}"
+`;
+
+exports[`IfPaddingRule if(true){
+			return 'so if';
+		} else
+		{
+			return 'else if';
+		} 1`] = `
+"if(true){
+			return 'so if';
+		} else {
+			return 'else if';
+		}"
+`;
+
+exports[`IfPaddingRule if(true){
+			return 'só if';
+		}
+		else {
+			return 'so else';
+		} 1`] = `
+"if(true){
+			return 'só if';
+		} else {
+			return 'so else';
+		}"
+`;

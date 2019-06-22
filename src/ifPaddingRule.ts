@@ -8,8 +8,21 @@ class Walk extends Lint.RuleWalker {
 
 		if (prevStatementChecker(ifStatement, this.getSourceFile())) {
 
-			this.addFailureAtNode(ifStatement, 'Missing blank line before if');
+			const fix = new Lint.Replacement(
+				ifStatement.getFullStart(),
+				ifStatement.getFullWidth(),
+				`\n${ifStatement.getFullText()}`
+			);
+
+			this.addFailureAtNode(ifStatement, 'Missing blank line before if', fix);
 		}
+
+		this.visitElse(ifStatement);
+
+		super.visitIfStatement(ifStatement);
+	}
+
+	private visitElse(ifStatement: ts.IfStatement) {
 
 		if (ifStatement.elseStatement) {
 
@@ -18,11 +31,15 @@ class Walk extends Lint.RuleWalker {
 
 			if (prevLine !== startLine) {
 
-				this.addFailureAtNode(ifStatement.elseStatement, 'Not allowed break line on else');
+				const fix = new Lint.Replacement(
+					ifStatement.getChildAt(4).getEnd(),
+					ifStatement.elseStatement.getStart() - ifStatement.getChildAt(4).getEnd(),
+					' else '
+				);
+
+				this.addFailureAtNode(ifStatement.elseStatement, 'Not allowed break line on else', fix);
 			}
 		}
-
-		super.visitIfStatement(ifStatement);
 	}
 }
 
