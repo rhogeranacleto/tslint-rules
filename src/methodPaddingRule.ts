@@ -8,7 +8,13 @@ class Walk extends Lint.RuleWalker {
 
 		if (prevTokenChecker(method, this.getSourceFile())) {
 
-			this.addFailureAtNode(method, 'Missing blank line before method');
+			const fix = new Lint.Replacement(
+				method.getFullStart(),
+				method.getFullWidth(),
+				`\n${method.getFullText()}`
+			);
+
+			this.addFailureAtNode(method, 'Missing blank line before method', fix);
 		}
 
 		super.visitMethodDeclaration(method);

@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Method padding rule should fix class Dan {
+			public method(){
+				console.log(true);
+			}
+			public method(){
+				console.log(true);
+			}
+		} 1`] = `
+"class Dan {
+
+			public method(){
+				console.log(true);
+			}
+
+			public method(){
+				console.log(true);
+			}
+		}"
+`;
+
+exports[`Method padding rule should fix class Dan {
+			public method(){
+				console.log(true);
+			}
+		} 1`] = `
+"class Dan {
+
+			public method(){
+				console.log(true);
+			}
+		}"
+`;
+
+exports[`Method padding rule should fix class Dan {
+			public static variable: string;
+			@Teste()
+			method(){
+				console.log(true);
+			}
+		} 1`] = `
+"class Dan {
+			public static variable: string;
+
+			@Teste()
+			method(){
+				console.log(true);
+			}
+		}"
+`;
+
+exports[`Method padding rule should fix class Dan {
+			variable: string;
+			method(){
+				console.log(true);
+			}
+		} 1`] = `
+"class Dan {
+			variable: string;
+
+			method(){
+				console.log(true);
+			}
+		}"
+`;

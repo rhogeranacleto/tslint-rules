@@ -1,4 +1,4 @@
-import { lintRunner } from '../helpers/lintRunner';
+import { getFileText, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'method-padding';
 
@@ -75,5 +75,41 @@ describe('Method padding rule', () => {
 		const result = lintRunner({ src, rule: RULE });
 
 		expect(result.errorCount).toBe(0);
+	});
+
+	it.each([
+		[`class Dan {
+			public method(){
+				console.log(true);
+			}
+		}`],
+		[`class Dan {
+			public method(){
+				console.log(true);
+			}
+			public method(){
+				console.log(true);
+			}
+		}`],
+		[`class Dan {
+			variable: string;
+			method(){
+				console.log(true);
+			}
+		}`],
+		[`class Dan {
+			public static variable: string;
+			@Teste()
+			method(){
+				console.log(true);
+			}
+		}`]
+	])('should fix %s', src => {
+
+		const result = lintRunner({ src, rule: RULE, fix: true });
+
+		expect(result.errorCount).toBe(0);
+
+		expect(getFileText(result)).toMatchSnapshot();
 	});
 });
