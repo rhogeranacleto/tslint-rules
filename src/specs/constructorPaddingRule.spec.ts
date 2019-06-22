@@ -1,4 +1,4 @@
-import { getReplacements, lintRunner } from '../helpers/lintRunner';
+import { getFileText, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'constructor-padding';
 
@@ -67,6 +67,6 @@ describe('Constructor', () => {
 
 		expect(result.errorCount).toBe(0);
 
-		expect(getReplacements(result)).toMatchSnapshot();
+		expect(getFileText(result)).toMatchSnapshot();
 	});
 });

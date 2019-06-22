@@ -1,4 +1,4 @@
-import { getReplacements, lintRunner } from '../helpers/lintRunner';
+import { getFileText, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'block-padding';
 
@@ -143,6 +143,6 @@ describe('blockPadding Rule', () => {
 
 		expect(result.errorCount).toBe(0);
 
-		expect(getReplacements(result)).toMatchSnapshot();
+		expect(getFileText(result)).toMatchSnapshot();
 	});
 });

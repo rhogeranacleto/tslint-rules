@@ -4,30 +4,22 @@ exports[`LastLineRule console.log(js);
 		for(let j =0;j<10;j++) {
 			console.log(j);
 		} 1`] = `
-Array [
-  Array [
-    "
+"console.log(js);
 
 		for(let j =0;j<10;j++) {
 			console.log(j);
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`LastLineRule console.log(js);
 		for(let j in jss) {
 			console.log(j);
 		} 1`] = `
-Array [
-  Array [
-    "
+"console.log(js);
 
 		for(let j in jss) {
 			console.log(j);
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`LastLineRule console.log(js);
@@ -40,42 +32,28 @@ exports[`LastLineRule console.log(js);
 		for(let j of jss) {
 			console.log(j);
 		} 1`] = `
-Array [
-  Array [
-    "
+"console.log(js);
 
 		for(let j of jss) {
 			console.log(j);
-		}",
-  ],
-  Array [
-    "
+		}
 
 		for(let j =0;j<10;j++) {
 			console.log(j);
-		}",
-  ],
-  Array [
-    "
+		}
 
 		for(let j of jss) {
 			console.log(j);
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`LastLineRule console.log(js);
 		for(let j of jss) {
 			console.log(j);
 		} 1`] = `
-Array [
-  Array [
-    "
+"console.log(js);
 
 		for(let j of jss) {
 			console.log(j);
-		}",
-  ],
-]
+		}"
 `;

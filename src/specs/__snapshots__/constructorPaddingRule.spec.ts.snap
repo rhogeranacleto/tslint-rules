@@ -4,26 +4,20 @@ exports[`Constructor class Maria {
 			@Otro()
 			constructor(private jj: JJ) {}
 		} 1`] = `
-Array [
-  Array [
-    "
+"class Maria {
 
 			@Otro()
-			constructor(private jj: JJ) {}",
-  ],
-]
+			constructor(private jj: JJ) {}
+		}"
 `;
 
 exports[`Constructor class Maria {
 			constructor(private jj: JJ) {}
 		} 1`] = `
-Array [
-  Array [
-    "
+"class Maria {
 
-			constructor(private jj: JJ) {}",
-  ],
-]
+			constructor(private jj: JJ) {}
+		}"
 `;
 
 exports[`Constructor class Maria {
@@ -31,25 +25,21 @@ exports[`Constructor class Maria {
 			@Otro()
 			constructor(private jj: JJ) {}
 		} 1`] = `
-Array [
-  Array [
-    "
+"class Maria {
+			public maria = true;
 
 			@Otro()
-			constructor(private jj: JJ) {}",
-  ],
-]
+			constructor(private jj: JJ) {}
+		}"
 `;
 
 exports[`Constructor class Maria {
 			public maria = true;
 			constructor(private jj: JJ) {}
 		} 1`] = `
-Array [
-  Array [
-    "
+"class Maria {
+			public maria = true;
 
-			constructor(private jj: JJ) {}",
-  ],
-]
+			constructor(private jj: JJ) {}
+		}"
 `;

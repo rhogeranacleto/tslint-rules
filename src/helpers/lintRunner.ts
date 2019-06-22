@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { Configuration, Linter, LintResult } from 'tslint';
 
 interface IMaria {
@@ -46,5 +47,15 @@ export function getReplacements(result: LintResult) {
 				return [fixJson.innerText];
 			}
 		});
+	}
+}
+
+export function getFileText(result: LintResult) {
+
+	if (result.fixes) {
+
+		const fileName = result.fixes[0].getFileName();
+
+		return fs.readFileSync(fileName, { encoding: 'utf-8' });
 	}
 }

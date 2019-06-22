@@ -16,12 +16,8 @@ exports[`ClassPadding @Entity()
 		class SemMaria {
 
 		} 1`] = `
-Array [
-  Array [
-    "@Entity()
-		class SemMaria { }",
-  ],
-]
+"@Entity()
+		class SemMaria { }"
 `;
 
 exports[`ClassPadding class Maria {
@@ -33,9 +29,7 @@ exports[`ClassPadding class Maria {
 				console.log('oi');
 			}
 		} 1`] = `
-Array [
-  Array [
-    "class Maria {
+"class Maria {
 
 			constructor(private jj: JJ){}
 			public dan() {
@@ -44,9 +38,7 @@ Array [
 			public dan() {
 				console.log('oi');
 			}
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`ClassPadding class Maria {
@@ -65,16 +57,12 @@ exports[`ClassPadding class Maria {
 			}
 
 		} 1`] = `
-Array [
-  Array [
-    "class Maria {
+"class Maria {
 
 			public dan() {
 				console.log('oi');
 			}
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`ClassPadding class Maria {
@@ -88,44 +76,24 @@ Array [
 `;
 
 exports[`ClassPadding class OtraMaria {
-		} 1`] = `
-Array [
-  Array [
-    "class OtraMaria { }",
-  ],
-]
-`;
+		} 1`] = `"class OtraMaria { }"`;
 
 exports[`ClassPadding class TaMaria {
 
-		} 1`] = `
-Array [
-  Array [
-    "class TaMaria { }",
-  ],
-]
-`;
+		} 1`] = `"class TaMaria { }"`;
 
 exports[`ClassPadding import jj from 'jj';
 		@Entity()
 		class Maria {} 1`] = `
-Array [
-  Array [
-    "
+"import jj from 'jj';
 
 		@Entity()
-		class Maria {}",
-  ],
-]
+		class Maria {}"
 `;
 
 exports[`ClassPadding import jj from 'jj';
 		class Maria {} 1`] = `
-Array [
-  Array [
-    "
+"import jj from 'jj';
 
-		class Maria {}",
-  ],
-]
+		class Maria {}"
 `;

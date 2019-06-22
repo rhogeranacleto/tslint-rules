@@ -5,14 +5,12 @@ exports[`blockPadding Rule class A {
 				console.log(1);
 			}
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"class A {
+			constructor() {
 
 				console.log(1);
-			}",
-  ],
-]
+			}
+		}"
 `;
 
 exports[`blockPadding Rule class A {
@@ -20,14 +18,12 @@ exports[`blockPadding Rule class A {
 				console.log(1);
 			}
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"class A {
+			public b() {
 
 				console.log(1);
-			}",
-  ],
-]
+			}
+		}"
 `;
 
 exports[`blockPadding Rule class A {
@@ -37,27 +33,21 @@ exports[`blockPadding Rule class A {
 
 			}
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"class A {
+			public b() {
 
 				console.log(1);
-			}",
-  ],
-]
+			}
+		}"
 `;
 
 exports[`blockPadding Rule done(() => {
 		return 'maria';
 	}) should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"done(() => {
 
 		return 'maria';
-	}",
-  ],
-]
+	})"
 `;
 
 exports[`blockPadding Rule done(() => {
@@ -65,27 +55,19 @@ exports[`blockPadding Rule done(() => {
 			return 'maria';
 
 		}) should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"done(() => {
 
 			return 'maria';
-		}",
-  ],
-]
+		})"
 `;
 
 exports[`blockPadding Rule for (let i = 0; i < 10; i++) {
 		console.log(i);
 	} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"for (let i = 0; i < 10; i++) {
 
 		console.log(i);
-	}",
-  ],
-]
+	}"
 `;
 
 exports[`blockPadding Rule for (let i = 0; i < 10; i++) {
@@ -93,27 +75,19 @@ exports[`blockPadding Rule for (let i = 0; i < 10; i++) {
 			console.log(i);
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"for (let i = 0; i < 10; i++) {
 
 			console.log(i);
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule for (let test in testes) {
 		console.log(test);
 	} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"for (let test in testes) {
 
 		console.log(test);
-	}",
-  ],
-]
+	}"
 `;
 
 exports[`blockPadding Rule for (let test in testes) {
@@ -121,27 +95,19 @@ exports[`blockPadding Rule for (let test in testes) {
 			console.log(test);
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"for (let test in testes) {
 
 			console.log(test);
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule for (let test of testes) {
 		console.log(test);
 	} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"for (let test of testes) {
 
 		console.log(test);
-	}",
-  ],
-]
+	}"
 `;
 
 exports[`blockPadding Rule for (let test of testes) {
@@ -149,27 +115,19 @@ exports[`blockPadding Rule for (let test of testes) {
 			console.log(test);
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"for (let test of testes) {
 
 			console.log(test);
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule function maria(){
 		console.log('true');
 	} should throw error for line after method 1`] = `
-Array [
-  Array [
-    "{
+"function maria(){
 
 		console.log('true');
-	}",
-  ],
-]
+	}"
 `;
 
 exports[`blockPadding Rule function maria(){
@@ -177,27 +135,19 @@ exports[`blockPadding Rule function maria(){
 			console.log('true');
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    "{
+"function maria(){
 
 			console.log('true');
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule if (true) {
 			console.log(true);
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"if (true) {
 
 			console.log(true);
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule if (true) {
@@ -205,20 +155,13 @@ exports[`blockPadding Rule if (true) {
 	} else {
 		console.log(false)
 	} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"if (true) {
 
 		console.log(true);
-	}",
-  ],
-  Array [
-    " {
+	} else {
 
 		console.log(false)
-	}",
-  ],
-]
+	}"
 `;
 
 exports[`blockPadding Rule if (true) {
@@ -226,20 +169,13 @@ exports[`blockPadding Rule if (true) {
 	} else if (false) {
 		console.log(false)
 	} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"if (true) {
 
 		console.log(true);
-	}",
-  ],
-  Array [
-    " {
+	} else if (false) {
 
 		console.log(false)
-	}",
-  ],
-]
+	}"
 `;
 
 exports[`blockPadding Rule if (true) {
@@ -250,14 +186,13 @@ exports[`blockPadding Rule if (true) {
 			console.log(false)
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"if (true) {
+
+			console.log(true);
+		} else {
 
 			console.log(false)
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule if (true) {
@@ -268,16 +203,12 @@ exports[`blockPadding Rule if (true) {
 
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"if (true) {
 
 			console.log(true);
 
 			joao();
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule if (true) {
@@ -289,20 +220,13 @@ exports[`blockPadding Rule if (true) {
 			console.log(false)
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"if (true) {
 
 			console.log(true);
-		}",
-  ],
-  Array [
-    " {
+		} else {
 
 			console.log(false)
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule if (true) {
@@ -314,20 +238,13 @@ exports[`blockPadding Rule if (true) {
 			console.log(false)
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"if (true) {
 
 			console.log(true);
-		}",
-  ],
-  Array [
-    " {
+		} else if (false) {
 
 			console.log(false)
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`blockPadding Rule if (true) {
@@ -336,27 +253,22 @@ exports[`blockPadding Rule if (true) {
 	} else {
 		console.log(false)
 	} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"if (true) {
+
+		console.log(true);
+	} else {
 
 		console.log(false)
-	}",
-  ],
-]
+	}"
 `;
 
 exports[`blockPadding Rule it('jj', () => {
 			expect(result.errorCount).toBe(1);
 	}); should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"it('jj', () => {
 
 			expect(result.errorCount).toBe(1);
-	}",
-  ],
-]
+	});"
 `;
 
 exports[`blockPadding Rule it('jj', () => {
@@ -364,14 +276,10 @@ exports[`blockPadding Rule it('jj', () => {
 			expect(result.errorCount).toBe(1);
 
 		}); should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"it('jj', () => {
 
 			expect(result.errorCount).toBe(1);
-		}",
-  ],
-]
+		});"
 `;
 
 exports[`blockPadding Rule try {
@@ -379,20 +287,13 @@ exports[`blockPadding Rule try {
 	} catch(e){
 		console.log(0)
 	} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"try {
 
 		console.log(0/0);
-	}",
-  ],
-  Array [
-    "{
+	} catch(e){
 
 		console.log(0)
-	}",
-  ],
-]
+	}"
 `;
 
 exports[`blockPadding Rule try {
@@ -404,18 +305,11 @@ exports[`blockPadding Rule try {
 			console.log(0)
 
 		} should throw error for line after method 1`] = `
-Array [
-  Array [
-    " {
+"try {
 
 			console.log(0/0);
-		}",
-  ],
-  Array [
-    "{
+		} catch(e){
 
 			console.log(0)
-		}",
-  ],
-]
+		}"
 `;

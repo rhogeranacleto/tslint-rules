@@ -1,4 +1,4 @@
-import { getReplacements, lintRunner } from '../helpers/lintRunner';
+import { getFileText, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'function-padding';
 
@@ -52,6 +52,6 @@ describe('LastLineRule', () => {
 
 		expect(result.errorCount).toBe(0);
 
-		expect(getReplacements(result)).toMatchSnapshot();
+		expect(getFileText(result)).toMatchSnapshot();
 	});
 });

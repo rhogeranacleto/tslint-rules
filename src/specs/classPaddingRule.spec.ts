@@ -1,4 +1,4 @@
-import { getReplacements, lintRunner } from '../helpers/lintRunner';
+import { getFileText, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'class-padding';
 
@@ -127,9 +127,8 @@ describe('ClassPadding', () => {
 
 		const result = lintRunner({ src, rule: RULE, fix: true });
 
-		// console.log(result.failures);
 		expect(result.errorCount).toBe(0);
 
-		expect(getReplacements(result)).toMatchSnapshot();
+		expect(getFileText(result)).toMatchSnapshot();
 	});
 });

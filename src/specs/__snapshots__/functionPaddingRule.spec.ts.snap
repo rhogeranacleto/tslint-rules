@@ -4,28 +4,20 @@ exports[`LastLineRule console.log(true);
 		export function maria() {
 			console.log(1);
 		} 1`] = `
-Array [
-  Array [
-    "
+"console.log(true);
 
 		export function maria() {
 			console.log(1);
-		}",
-  ],
-]
+		}"
 `;
 
 exports[`LastLineRule console.log(true);
 		function maria() {
 			console.log(1);
 		} 1`] = `
-Array [
-  Array [
-    "
+"console.log(true);
 
 		function maria() {
 			console.log(1);
-		}",
-  ],
-]
+		}"
 `;
