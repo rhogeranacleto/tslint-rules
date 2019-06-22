@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LastLineRule console.log(true);
+		try {
+			return 0/0;
+		}catch(e){
+			return e;
+		} 1`] = `
+"console.log(true);
+
+		try {
+			return 0/0;
+		}catch(e){
+			return e;
+		}"
+`;
+
+exports[`LastLineRule try {
+			return 0/0;
+		}
+		catch (e)
+		{
+			return e;
+		} 1`] = `
+"try {
+			return 0/0;
+		} catch (e) {
+			return e;
+		}"
+`;
+
+exports[`LastLineRule try {
+			return 0/0;
+		}
+		catch (e) {
+			return e;
+		} 1`] = `
+"try {
+			return 0/0;
+		} catch (e) {
+			return e;
+		}"
+`;
+
+exports[`LastLineRule try {
+			return 0/0;
+		} catch (e)
+		{
+			return e;
+		} 1`] = `
+"try {
+			return 0/0;
+		} catch (e) {
+			return e;
+		}"
+`;
