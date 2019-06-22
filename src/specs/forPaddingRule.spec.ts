@@ -1,4 +1,4 @@
-import { lintRunner } from '../helpers/lintRunner';
+import { getReplacements, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'for-padding';
 
@@ -61,5 +61,37 @@ describe('LastLineRule', () => {
 		const result = lintRunner({ src, rule: RULE });
 
 		expect(result.errorCount).toBe(count);
+	});
+
+	it.each([
+		[`console.log(js);
+		for(let j =0;j<10;j++) {
+			console.log(j);
+		}`],
+		[`console.log(js);
+		for(let j in jss) {
+			console.log(j);
+		}`],
+		[`console.log(js);
+		for(let j of jss) {
+			console.log(j);
+		}`],
+		[`console.log(js);
+		for(let j of jss) {
+			console.log(j);
+		}
+		for(let j =0;j<10;j++) {
+			console.log(j);
+		}
+		for(let j of jss) {
+			console.log(j);
+		}`]
+	])('%s', src => {
+
+		const result = lintRunner({ src, rule: RULE, fix: true });
+
+		expect(result.errorCount).toBe(0);
+
+		expect(getReplacements(result)).toMatchSnapshot();
 	});
 });

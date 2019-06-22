@@ -29,7 +29,13 @@ class Walk extends Lint.RuleWalker {
 
 		if (prevStatementChecker(forStatement, this.getSourceFile())) {
 
-			this.addFailureAtNode(forStatement, 'For must have a line before');
+			const fix = new Lint.Replacement(
+				forStatement.getFullStart(),
+				forStatement.getFullWidth(),
+				`\n${forStatement.getFullText()}`
+			);
+
+			this.addFailureAtNode(forStatement, 'For must have a line before', fix);
 		}
 	}
 }
