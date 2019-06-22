@@ -32,7 +32,13 @@ class Walker extends Lint.RuleWalker {
 
 			if (nextLine === line + 1) {
 
-				this.addFailureAtNode(variable, NEW_LINE_AFTER);
+				const fix = new Lint.Replacement(
+					next.getFullStart(),
+					next.getFullWidth(),
+					`\n${next.getFullText()}`
+				);
+
+				this.addFailureAtNode(variable, NEW_LINE_AFTER, fix);
 			}
 		}
 	}
@@ -47,7 +53,13 @@ class Walker extends Lint.RuleWalker {
 
 			if (prevLine === line - 1) {
 
-				this.addFailureAtNode(variable, NEW_LINE_BEFORE);
+				const fix = new Lint.Replacement(
+					variable.getFullStart(),
+					variable.getFullWidth(),
+					`\n${variable.getFullText()}`
+				);
+
+				this.addFailureAtNode(variable, NEW_LINE_BEFORE, fix);
 			}
 		}
 	}
@@ -61,7 +73,13 @@ class Walker extends Lint.RuleWalker {
 
 			if (parentLine === line - 1) {
 
-				this.addFailureAtNode(variable, NEW_LINE_BEFORE);
+				const fix = new Lint.Replacement(
+					variable.getFullStart(),
+					variable.getFullWidth(),
+					`\n${variable.getFullText()}`
+				);
+
+				this.addFailureAtNode(variable, NEW_LINE_BEFORE, fix);
 			}
 		}
 	}

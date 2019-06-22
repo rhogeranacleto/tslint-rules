@@ -1,4 +1,4 @@
-import { lintRunner } from '../helpers/lintRunner';
+import { getFileText, lintRunner } from '../helpers/lintRunner';
 import { NEW_LINE_AFTER, NEW_LINE_BEFORE } from '../variablePaddingRule';
 
 const RULE = 'variable-padding';
@@ -43,5 +43,38 @@ describe('maria', () => {
 		expect(result.errorCount).toBe(count);
 
 		expect(result.failures.map(f => f.getFailure())).toEqual(errors);
+	});
+
+	it.each([
+		[`function() {
+			const maria = 'maria';
+			console.log(maria);
+		}`],
+		[`function() {
+			console.log('oi');
+			const maria = 'maria';
+			console.log(maria);
+		}`],
+		[`import moment from 'moment';
+		const maria='joaoa';`],
+		[`function maria() {
+
+			const objeto = {
+				um_objeto: 3,
+				outra_key: 2
+			};
+			chamaAFuncao();
+		}`]
+	])('%s', (src: string) => {
+
+		const result = lintRunner({
+			src,
+			rule: RULE,
+			fix: true
+		});
+
+		expect(result.errorCount).toBe(0);
+
+		expect(getFileText(result)).toMatchSnapshot();
 	});
 });

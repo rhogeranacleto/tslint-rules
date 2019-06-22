@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`maria function maria() {
+
+			const objeto = {
+				um_objeto: 3,
+				outra_key: 2
+			};
+			chamaAFuncao();
+		} 1`] = `
+"function maria() {
+
+			const objeto = {
+				um_objeto: 3,
+				outra_key: 2
+			};
+
+			chamaAFuncao();
+		}"
+`;
+
+exports[`maria function() {
+			console.log('oi');
+			const maria = 'maria';
+			console.log(maria);
+		} 1`] = `
+"function() {
+			console.log('oi');
+
+			const maria = 'maria';
+
+			console.log(maria);
+		}"
+`;
+
+exports[`maria function() {
+			const maria = 'maria';
+			console.log(maria);
+		} 1`] = `
+"function() {
+
+			const maria = 'maria';
+
+			console.log(maria);
+		}"
+`;
+
+exports[`maria import moment from 'moment';
+		const maria='joaoa'; 1`] = `
+"import moment from 'moment';
+
+		const maria='joaoa';"
+`;
