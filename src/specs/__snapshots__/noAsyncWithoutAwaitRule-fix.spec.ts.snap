@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`noAsyncWithoutAwait fix Arrow functions should fail when the async arrow function doesn't have an await 1`] = `
+"
+			const a = () => {
+				let b = 1;
+				console.log(b);
+			}"
+`;
+
+exports[`noAsyncWithoutAwait fix Classes should check classes that are inside functions 1`] = `
+"
+			async () => {
+				await a();
+				class A {
+					b() {
+						console.log(1);
+					}
+				}
+			};
+		"
+`;
+
+exports[`noAsyncWithoutAwait fix Classes should fail when async class method has no await 1`] = `
+"
+			class A {
+				b() {
+					console.log(1);
+				}
+			}
+		"
+`;
+
+exports[`noAsyncWithoutAwait fix Classes should fail when async class method has no await 2`] = `
+"
+			class A {
+				public b() {
+					console.log(1);
+				}
+			}
+		"
+`;
+
+exports[`noAsyncWithoutAwait fix Functions should fail when the async function doesn't have an await 1`] = `
+"
+			function a(){
+				let b = 1;
+				console.log(b);
+			}"
+`;
+
+exports[`noAsyncWithoutAwait fix Functions should fail when the async function has an await inside a arrow function declaration 1`] = `
+"
+			function a(){
+				let b = 1;
+				let b = async () => {
+					await fetch();
+				};
+			}"
+`;
+
+exports[`noAsyncWithoutAwait fix Functions should fail when the async function has an await inside a regular function declaration 1`] = `
+"
+			function a(){
+				let b = 1;
+				async function f() {
+					await fetch();
+				};
+			}"
+`;
+
+exports[`noAsyncWithoutAwait fix Functions should fail when the function is not at the top level 1`] = `
+"
+			function a(){
+				let b = 1;
+				function f() {
+					fetch();
+				};
+			}"
+`;
+
+exports[`noAsyncWithoutAwait fix return statements should fail when the async function has a return statement 1`] = `
+"
+			function a() {
+				let b = 1;
+				let a = () => {
+				return 1;
+				}
+			}
+		"
+`;

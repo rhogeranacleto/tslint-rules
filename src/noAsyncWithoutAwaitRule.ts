@@ -117,10 +117,17 @@ class Walk extends Lint.RuleWalker {
 
 			if (asyncModifier !== undefined) {
 
+				const fix = new Lint.Replacement(
+					asyncModifier.getStart(),
+					asyncModifier.getWidth() + 1,
+					''
+				);
+
 				this.addFailureAt(
 					asyncModifier.getStart(),
 					asyncModifier.getEnd() - asyncModifier.getStart(),
-					FAILURE_STRING
+					FAILURE_STRING,
+					fix
 				);
 			}
 		}
