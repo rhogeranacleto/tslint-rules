@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LastLineRule console.log(true);
+		export function maria() {
+			console.log(1);
+		} 1`] = `
+Array [
+  Array [
+    "
+
+		export function maria() {
+			console.log(1);
+		}",
+  ],
+]
+`;
+
+exports[`LastLineRule console.log(true);
+		function maria() {
+			console.log(1);
+		} 1`] = `
+Array [
+  Array [
+    "
+
+		function maria() {
+			console.log(1);
+		}",
+  ],
+]
+`;

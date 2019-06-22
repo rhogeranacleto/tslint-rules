@@ -8,7 +8,13 @@ class Walk extends Lint.RuleWalker {
 
 		if (prevStatementChecker(functionDeclaration, this.getSourceFile())) {
 
-			this.addFailureAtNode(functionDeclaration, 'Function must have a line before');
+			const fix = new Lint.Replacement(
+				functionDeclaration.getFullStart(),
+				functionDeclaration.getFullWidth(),
+					`\n${functionDeclaration.getFullText()}`
+			);
+
+			this.addFailureAtNode(functionDeclaration, 'Function must have a line before', fix);
 		}
 
 		super.visitFunctionDeclaration(functionDeclaration);
