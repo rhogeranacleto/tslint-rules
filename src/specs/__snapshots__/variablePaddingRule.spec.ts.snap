@@ -46,6 +46,18 @@ exports[`maria function() {
 `;
 
 exports[`maria import moment from 'moment';
+		const maria='joaoa';
+		const maria='joaoa';
+		console.log('maria') 1`] = `
+"import moment from 'moment';
+
+		const maria='joaoa';
+		const maria='joaoa';
+
+		console.log('maria')"
+`;
+
+exports[`maria import moment from 'moment';
 		const maria='joaoa'; 1`] = `
 "import moment from 'moment';
 

@@ -64,7 +64,11 @@ describe('maria', () => {
 				outra_key: 2
 			};
 			chamaAFuncao();
-		}`]
+		}`],
+		[`import moment from 'moment';
+		const maria='joaoa';
+		const maria='joaoa';
+		console.log('maria')`]
 	])('%s', (src: string) => {
 
 		const result = lintRunner({
