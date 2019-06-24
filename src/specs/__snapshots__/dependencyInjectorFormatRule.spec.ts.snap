@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DependecyInjectorFormat tests class Den {
+			constructor (
+				private readonly on: On) { }
+		} 1`] = `
+"class Den {
+			constructor (private readonly on: On) { }"
+`;
+
+exports[`DependecyInjectorFormat tests class Den {
+			constructor (
+				private readonly on: On,
+				private readonly off: Off
+			) { }
+		} 1`] = `
+"class Den {
+			constructor (
+				private readonly on: On,
+				private readonly off: Off) { }
+		}"
+`;
+
+exports[`DependecyInjectorFormat tests class Den {
+			constructor (private readonly on: On) {
+
+			}
+		} 1`] = `
+"class Den {
+			constructor (private readonly on: On) {}"
+`;
+
+exports[`DependecyInjectorFormat tests class Den {
+			constructor (private readonly on: On) { console.log(on); }
+		} 1`] = `
+"class Den {
+			constructor (private readonly on: On) {
+
+ console.log(on); 
+}
+		}"
+`;
+
+exports[`DependecyInjectorFormat tests class Den {
+			constructor (private readonly on: On,private readonly off: Off) { }
+		} 1`] = `
+"class Den {
+			constructor (
+private readonly on: On,
+private readonly off: Off) { } }
+		}"
+`;

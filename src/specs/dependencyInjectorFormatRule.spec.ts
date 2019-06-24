@@ -1,4 +1,4 @@
-import { lintRunner } from '../helpers/lintRunner';
+import { getFileText, lintRunner } from '../helpers/lintRunner';
 
 const RULE = 'dependency-injector-format';
 
@@ -104,5 +104,75 @@ describe('DependecyInjectorFormat tests', () => {
 		const result = lintRunner({ src, rule: RULE });
 
 		expect(result.errorCount).toBe(count);
+	});
+
+	it.only.each([
+		[`class Den {
+			constructor (
+				private readonly on: On) { }
+		}`],
+		[`class Den {
+			constructor (private readonly on: On) {
+
+			}
+		}`],
+		[`class Den {
+			constructor (private readonly on: On) { console.log(on); }
+		}`],
+		[`class Den {
+			constructor (
+				private readonly on: On,
+				private readonly off: Off
+			) { }
+		}`],
+		[`class Den {
+			constructor (private readonly on: On,private readonly off: Off) { }
+		}`],
+		[`class Den {
+			constructor (private readonly on: On,private readonly off: Off) { console.log(on); }
+		}`],
+		[`class Den {
+			constructor (
+				private readonly on: On,private readonly off: Off
+			) { }
+		}`],
+		[`class Den {
+			constructor (private readonly on: On,
+				private readonly off: Off
+			) { }
+		}`],
+		[`class Den {
+			constructor (
+				private readonly on: On,
+				private readonly midle: Midle,
+				private readonly off: Off) {
+				}
+		}`],
+		[`class Den {
+			constructor (
+				private readonly on: On,
+				private readonly off: Off) {
+
+				console.log(on);
+			}
+		}`],
+		[`class Den {
+			constructor (
+				private readonly on: On,
+				private readonly off: Off)
+			{
+
+				console.log(on);
+			}
+		}`]
+	])('%s', src => {
+
+		const result = lintRunner({ src, rule: RULE, fix: true });
+
+		console.log(result.failures[0] && result.failures[0].getFailure());
+
+		expect(result.errorCount).toBe(0);
+
+		expect(getFileText(result)).toMatchSnapshot();
 	});
 });

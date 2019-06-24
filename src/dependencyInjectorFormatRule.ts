@@ -33,6 +33,23 @@ class Walker extends Lint.RuleWalker {
 
 		if (constructor.body && constructor.body.getChildAt(1).getChildCount() > 0) {
 
+			this.body(constructor, startLine, endLine);
+		} else if (startLine !== endLine) {
+
+			const fix = new Lint.Replacement(
+				constructor.getStart(),
+				constructor.getFullWidth(),
+				constructor.getFullText().replace(/\n|\t/g, '')
+			);
+
+			this.addFailureAtNode(constructor, NOT_ALLOWED_BREAK_LINE, fix);
+		}
+	}
+
+	private body(constructor: ts.ConstructorDeclaration, startLine: number, endLine: number) {
+
+		if (constructor.body && constructor.body.getChildAt(1).getChildCount() > 0) {
+
 			const declarationLineEnd = ts.getLineAndCharacterOfPosition(
 				this.getSourceFile(),
 				constructor.body.getChildAt(0).getStart()
@@ -45,13 +62,13 @@ class Walker extends Lint.RuleWalker {
 
 			if (endLine <= startLine) {
 
-				this.addFailureAtNode(constructor, NOT_ALLOWED_ALL_IN_THE_SAME);
-			}
-		} else {
+				const fix = new Lint.Replacement(
+					constructor.getStart(),
+					constructor.getWidth(),
+					constructor.getText().replace('{', '{\n\n').replace('}', '\n}')
+				);
 
-			if (startLine !== endLine) {
-
-				this.addFailureAtNode(constructor, NOT_ALLOWED_BREAK_LINE);
+				this.addFailureAtNode(constructor, NOT_ALLOWED_ALL_IN_THE_SAME, fix);
 			}
 		}
 	}
@@ -71,7 +88,13 @@ class Walker extends Lint.RuleWalker {
 
 			if (parameterLine !== endLine) {
 
-				this.addFailureAtNode(constructor, NOT_ALLOWED_BREAK_BRACKET_LINE);
+				const fix = new Lint.Replacement(
+					constructor.getStart(),
+					constructor.getWidth(),
+					constructor.getText().replace(/(\n|\t)+\)/, ')')
+				);
+
+				this.addFailureAtNode(constructor, NOT_ALLOWED_BREAK_BRACKET_LINE, fix);
 			}
 		}
 	}
@@ -87,7 +110,17 @@ class Walker extends Lint.RuleWalker {
 
 			if (parameterLine !== (startLine + i + 1)) {
 
-				this.addFailureAtNode(constructor, PARAMETERS_MUST_BE_UNDERNEATH_THE_OTHER);
+				// const tabs = constructor.getFullText().split(/[^\t]/)[0].length;
+
+				// console.log(tabs);
+
+				const fix = new Lint.Replacement(
+					constructor.getStart(),
+					constructor.getWidth(),
+					constructor.getText().replace(/\(/, '(\n').replace(/,/g, ',\n')
+				);
+
+				this.addFailureAtNode(constructor, PARAMETERS_MUST_BE_UNDERNEATH_THE_OTHER, fix);
 			}
 		}
 	}
