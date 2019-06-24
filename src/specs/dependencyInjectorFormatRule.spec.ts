@@ -107,48 +107,43 @@ describe('DependecyInjectorFormat tests', () => {
 	});
 
 	it.only.each([
-		[`class Den {
+		[`class Den1 {
 			constructor (
 				private readonly on: On) { }
 		}`],
-		[`class Den {
+		[`class Den2 {
 			constructor (private readonly on: On) {
 
 			}
 		}`],
-		[`class Den {
+		[`class Den3 {
 			constructor (private readonly on: On) { console.log(on); }
 		}`],
-		[`class Den {
+		[`class Den4 {
 			constructor (
 				private readonly on: On,
 				private readonly off: Off
 			) { }
 		}`],
-		[`class Den {
+		[`class Den5 {
 			constructor (private readonly on: On,private readonly off: Off) { }
 		}`],
-		[`class Den {
-			constructor (private readonly on: On,private readonly off: Off) { console.log(on); }
-		}`],
-		[`class Den {
+		[`class Den6 {
 			constructor (
-				private readonly on: On,private readonly off: Off
-			) { }
+				private readonly on: On,private readonly off: Off) { }
 		}`],
-		[`class Den {
+		[`class Den7 {
 			constructor (private readonly on: On,
-				private readonly off: Off
-			) { }
+				private readonly off: Off) { }
 		}`],
-		[`class Den {
+		[`class Den8 {
 			constructor (
 				private readonly on: On,
 				private readonly midle: Midle,
 				private readonly off: Off) {
 				}
 		}`],
-		[`class Den {
+		[`class Den9 {
 			constructor (
 				private readonly on: On,
 				private readonly off: Off) {
@@ -156,7 +151,7 @@ describe('DependecyInjectorFormat tests', () => {
 				console.log(on);
 			}
 		}`],
-		[`class Den {
+		[`class Den10 {
 			constructor (
 				private readonly on: On,
 				private readonly off: Off)
@@ -165,11 +160,9 @@ describe('DependecyInjectorFormat tests', () => {
 				console.log(on);
 			}
 		}`]
-	])('%s', src => {
+	])('should fix %s', src => {
 
 		const result = lintRunner({ src, rule: RULE, fix: true });
-
-		console.log(result.failures[0] && result.failures[0].getFailure());
 
 		expect(result.errorCount).toBe(0);
 

@@ -38,8 +38,8 @@ class Walker extends Lint.RuleWalker {
 
 			const fix = new Lint.Replacement(
 				constructor.getStart(),
-				constructor.getFullWidth(),
-				constructor.getFullText().replace(/\n|\t/g, '')
+				constructor.getWidth(),
+				constructor.getText().replace(/\n|\t/g, '')
 			);
 
 			this.addFailureAtNode(constructor, NOT_ALLOWED_BREAK_LINE, fix);
@@ -54,6 +54,7 @@ class Walker extends Lint.RuleWalker {
 				this.getSourceFile(),
 				constructor.body.getChildAt(0).getStart()
 			).line;
+			const tabs = constructor.getFullText().split(/[^\t\n]/)[0].replace('\n', '').length;
 
 			if (startLine !== declarationLineEnd) {
 
@@ -63,9 +64,9 @@ class Walker extends Lint.RuleWalker {
 			if (endLine <= startLine) {
 
 				const fix = new Lint.Replacement(
-					constructor.getStart(),
-					constructor.getWidth(),
-					constructor.getText().replace('{', '{\n\n').replace('}', '\n}')
+					constructor.getFullStart(),
+					constructor.getFullWidth(),
+					constructor.getFullText().replace('{', `{\n\n${'\t'.repeat(tabs)}`).replace('}', `\n${'\t'.repeat(tabs)}}`)
 				);
 
 				this.addFailureAtNode(constructor, NOT_ALLOWED_ALL_IN_THE_SAME, fix);
@@ -84,18 +85,15 @@ class Walker extends Lint.RuleWalker {
 		if (constructor.body && constructor.body.getChildAt(1).getChildCount() > 0) {
 
 			this.bodyLine(constructor, constructor.body, parameterLine);
-		} else {
+		} else if (parameterLine !== endLine) {
 
-			if (parameterLine !== endLine) {
+			const fix = new Lint.Replacement(
+				constructor.getFullStart(),
+				constructor.getFullWidth(),
+				constructor.getFullText().replace(/(\n|\t)+\)/, ')').replace(/\{[\n\t]+\}/, '{ }')
+			);
 
-				const fix = new Lint.Replacement(
-					constructor.getStart(),
-					constructor.getWidth(),
-					constructor.getText().replace(/(\n|\t)+\)/, ')')
-				);
-
-				this.addFailureAtNode(constructor, NOT_ALLOWED_BREAK_BRACKET_LINE, fix);
-			}
+			this.addFailureAtNode(constructor, NOT_ALLOWED_BREAK_BRACKET_LINE, fix);
 		}
 	}
 
@@ -110,17 +108,18 @@ class Walker extends Lint.RuleWalker {
 
 			if (parameterLine !== (startLine + i + 1)) {
 
-				// const tabs = constructor.getFullText().split(/[^\t]/)[0].length;
-
-				// console.log(tabs);
+				const tabs = constructor.getFullText().split(/[^\t\n]/)[0].replace('\n', '').length;
 
 				const fix = new Lint.Replacement(
-					constructor.getStart(),
-					constructor.getWidth(),
-					constructor.getText().replace(/\(/, '(\n').replace(/,/g, ',\n')
+					constructor.getFullStart(),
+					constructor.getFullWidth(),
+					constructor.getFullText()
+						.replace(/\(([^\n])/, `(\n${'\t'.repeat(tabs + 1)}$1`)
+						.replace(/,([^\n])/g, `,\n${'\t'.repeat(tabs + 1)}$1`)
 				);
 
 				this.addFailureAtNode(constructor, PARAMETERS_MUST_BE_UNDERNEATH_THE_OTHER, fix);
+				break;
 			}
 		}
 	}
@@ -143,7 +142,15 @@ class Walker extends Lint.RuleWalker {
 
 		if (closeParenthesesLine !== (parameterLine + 1)) {
 
-			this.addFailureAtNode(constructor, CLOSE_BRACKET_MUST_BREAK_LINE);
+			const tabs = constructor.getFullText().split(/[^\t\n]/)[0].replace('\n', '').length;
+
+			const fix = new Lint.Replacement(
+				constructor.getFullStart(),
+				constructor.getFullWidth(),
+				constructor.getFullText().replace(/\)[\n\t\s]*\{/, `\n${'\t'.repeat(tabs)}) {`)
+			);
+
+			this.addFailureAtNode(constructor, CLOSE_BRACKET_MUST_BREAK_LINE, fix);
 		}
 	}
 }
